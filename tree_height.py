@@ -25,8 +25,8 @@ def compute_height(n, parents):
 
 
 def main():
-    input_type = input("Enter input type (K for keyboard, F for file): ")
-    if input_type.upper() == 'K':
+    input_type = input()
+    if input_type.upper() == 'I':
         n = int(input())
         parents = list(map(int, input().split()))
     elif input_type.upper() == 'F':
