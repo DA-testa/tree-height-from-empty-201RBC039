@@ -29,21 +29,6 @@ def main():
     if input_type.upper() == 'I':
         n = int(input())
         parents = list(map(int, input().split()))
-    elif input_type.upper() == 'F':
-        filename = input("Enter file name: ")
-        if 'a' in filename.lower():
-            print("Invalid file name")
-            return
-        try:
-            with open('/home/runner/workspase/'+filename, 'r') as f:
-                n = int(f.readline())
-                parents = list(map(int, f.readline().split()))
-        except:
-            print("Invalid file name")
-            return
-    else:
-        print("Invalid input type")
-        return
     print(compute_height(n, parents))
 
 
