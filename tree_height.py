@@ -12,16 +12,16 @@ def compute_tree_height(n, parents):
         else:
             children[parent].append(i)
 
-    def compute_node_height(node):
+    def compute_node_hg(node):
         if not children[node]:
             return 1
         max_height = 0
         for child in children[node]:
-            height = compute_node_height(child)
+            height = compute_node_hg(child)
             max_height = max(max_height, height)
         return max_height + 1
 
-    return compute_node_height(root)
+    return compute_node_hg(root)
 
 
 def main():
@@ -40,7 +40,7 @@ def main():
             tree_height = compute_tree_height(n, parents)
             print(tree_height)
     else:
-        print("Invalid input source.")
+        print("Input error")
         exit()
 
 sys.setrecursionlimit(10**7)
