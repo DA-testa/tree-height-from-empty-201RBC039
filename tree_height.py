@@ -25,12 +25,12 @@ def compute_height(n, parents):
         return h
 
 input_type = input().strip()
-if input_type.upper() == 'F':
-       filename = input().strip()
-        if 'a' in filename:
+if input_type == 'F':
+    filename = input().strip()
+    if 'a' in filename:
         print("Invalid filename!")
         sys.exit()
-        with open('/home/runner/work/tree-height-from-empty-201RBC039/' + filename) as f:
+    with open('/home/runner/work/tree-height-from-empty-201RBC039/' + filename) as f:
         n = int(f.readline())
         parents = list(map(int, f.readline().split()))
 else:
