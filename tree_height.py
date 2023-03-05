@@ -35,7 +35,7 @@ def main():
             print("Invalid file name")
             return
         try:
-            with open('input/'+filename, 'r') as f:
+            with open('/home/runner/workspase/input/'+filename, 'r') as f:
                 n = int(f.readline())
                 parents = list(map(int, f.readline().split()))
         except:
