@@ -26,17 +26,17 @@ def compute_height(n, parents):
 
 def main():
     input_type = input().strip()
-    if input_type.upper() == 'F':
+if input_type.upper() == 'F':
        filename = input().strip()
-    if 'a' in filename:
+        if 'a' in filename:
         print("Invalid filename!")
         sys.exit()
-    with open('/home/runner/work/tree-height-from-empty-201RBC039/' + filename) as f:
+        with open('/home/runner/work/tree-height-from-empty-201RBC039/' + filename) as f:
         n = int(f.readline())
         parents = list(map(int, f.readline().split()))
-    else:
-        n = int(input())
-        parents = list(map(int, input().split()))
+else:
+    n = int(input())
+    parents = list(map(int, input().split()))
 
 
 #sys.setrecursionlimit(10**7)  
