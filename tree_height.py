@@ -30,7 +30,7 @@ if input_type == 'F':
     if 'a' in filename:
         print("Invalid filename!")
         sys.exit()
-    with open(filename) as f:
+    with open("/home/runner/work/tree-height-from-empty-201RBC039/tree-height-from-empty-201RBC039/") as f:
         n = int(f.readline())
         parents = list(map(int, f.readline().split()))
 else:
