@@ -3,8 +3,7 @@
 import sys
 import threading
 
-
-def compute_height(n, parents):
+def compute_tree_height(n, parents):
     children = [[] for _ in range(n)]
     for i in range(n):
         parent = parents[i]
@@ -13,37 +12,37 @@ def compute_height(n, parents):
         else:
             children[parent].append(i)
 
-    def compute_depth(node):
+    def compute_node_height(node):
         if not children[node]:
             return 1
-        max_h = 0
+        max_height = 0
         for child in children[node]:
-            h = compute_node_h(child)
-            max_h = max(max_h, h)
-        return max_h + 1
+            height = compute_node_height(child)
+            max_height = max(max_height, height)
+        return max_height + 1
 
-    return compute_node_h(root)
+    return compute_node_height(root)
 
 
 def main():
-    input_type = input()
+    input_source = input()
 
-    if 'i' in input_type:
+    if 'i' in input_source:
         n = int(input())
         parents = list(map(int, input().split()))
-        tree_h = compute_tree_h(n, parents)
-        print(tree_h)
-    elif 'F' in input_type:
-        file = input()
-        with open("test/" + file, 'r') as f:
+        tree_height = compute_tree_height(n, parents)
+        print(tree_height)
+    elif 'F' in input_source:
+        filename = input()
+        with open("test/" + filename, 'r') as f:
             n = int(f.readline())
             parents = list(map(int, f.readline().split()))
-            tree_h = compute_tree_h(n, parents)
-            print(tree_h)
+            tree_height = compute_tree_height(n, parents)
+            print(tree_height)
     else:
-        print("Error")
+        print("Invalid input source.")
         exit()
 
-sys.setrecursionlimit(10**7)  
-threading.stack_size(2**27)   
+sys.setrecursionlimit(10**7)
+threading.stack_size(2**27)
 threading.Thread(target=main).start()
