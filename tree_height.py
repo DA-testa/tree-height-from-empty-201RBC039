@@ -16,32 +16,32 @@ def compute_height(n, parents):
     def compute_depth(node):
         if not children[node]:
             return 1
-        max_depth = 0
+        max_h = 0
         for child in children[node]:
-            depth = compute_depth(child)
-            max_depth = max(max_depth, depth)
-        return max_depth + 1
+            h = compute_node_h(child)
+            max_h = max(max_h, h)
+        return max_h + 1
 
-    return compute_depth(root)
+    return compute_node_h(root)
 
 
 def main():
     input_type = input()
 
-    if 'I' in input_type:
+    if 'i' in input_type:
         n = int(input())
         parents = list(map(int, input().split()))
-        height = compute_height(n, parents)
-        print(height)
+        tree_h = compute_tree_h(n, parents)
+        print(tree_h)
     elif 'F' in input_type:
-        filename = input()
-        with open("test/" + filename, 'r') as f:
+        file = input()
+        with open("test/" + file, 'r') as f:
             n = int(f.readline())
             parents = list(map(int, f.readline().split()))
-            height = compute_height(n, parents)
-            print(height)
+            tree_h = compute_tree_h(n, parents)
+            print(tree_h)
     else:
-        print("Invalids")
+        print("Error")
         exit()
 
 sys.setrecursionlimit(10**7)  
