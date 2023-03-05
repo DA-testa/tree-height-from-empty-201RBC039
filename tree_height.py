@@ -38,7 +38,7 @@ def main():
             n = int(f.readline())
             parents = list(map(int, f.readline().split()))
             h = comp_h(n, parents)
-            print(height)
+            print(h)
     else:
         print("Error")
         exit()
