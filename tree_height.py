@@ -30,7 +30,7 @@ if input_type == 'F':
     if 'a' in filename:
         print("Invalid filename!")
         sys.exit()
-    with open('/home/runner/work/' + filename) as f:
+    with open(filename) as f:
         n = int(f.readline())
         parents = list(map(int, f.readline().split()))
 else:
