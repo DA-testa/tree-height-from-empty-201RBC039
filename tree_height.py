@@ -5,33 +5,41 @@ import threading
 import numpy
 
 def compute_height(n, parents):
-    tree = {}
-    for i in range(n):
-        tree[i] = []
+    nodes = [[] for _ in range(n)]
     for i in range(n):
         parent = parents[i]
         if parent == -1:
             root = i
         else:
-            tree[parent].append(i)
-
+            nodes[parent].append(i)
+    
+    memo = {}
     def height(node):
-        if not tree[node]:
-            return 1
-        else:
-            return max(height(child) for child in tree[node]) + 1
-
-    return height(root)
-
+        if node in memo:
+            return memo[node]
+        if not nodes[node]:
+            memo[node] = 0
+            return 0
+        h = max(height(child) for child in nodes[node]) + 1
+        memo[node] = h
+        return h
 
 def main():
-    input_type = input()
-    if input_type.upper() == 'I':
+    input_type = input().strip()
+    if input_type.upper() == 'F':
+       filename = input().strip()
+    if 'a' in filename:
+        print("Invalid filename!")
+        sys.exit()
+    with open('/home/runner/work/tree-height-from-empty-201RBC039/' + filename) as f:
+        n = int(f.readline())
+        parents = list(map(int, f.readline().split()))
+    else:
         n = int(input())
         parents = list(map(int, input().split()))
-    print(compute_height(n, parents))
 
 
-sys.setrecursionlimit(10**7)  
-threading.stack_size(2**27)
-threading.Thread(target=main).start()
+#sys.setrecursionlimit(10**7)  
+#threading.stack_size(2**27)
+#threading.Thread(target=main).start()
+print(compute_height(n, parents))
