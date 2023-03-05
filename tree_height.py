@@ -24,8 +24,7 @@ def compute_height(n, parents):
         memo[node] = h
         return h
 
-def main():
-    input_type = input().strip()
+input_type = input().strip()
 if input_type.upper() == 'F':
        filename = input().strip()
         if 'a' in filename:
